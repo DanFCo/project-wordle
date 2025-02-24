@@ -24,14 +24,9 @@ function Game() {
     const checkedGuess = checkGuess(guess, answer);
     setGuesses((prevGuesses) => [...prevGuesses, checkedGuess]);
 
-    const uniqueCheckedGuessStatuses = checkedGuess.map((charData) => charData.status)
-    const statusesSet =  new Set(uniqueCheckedGuessStatuses)
-    const isCorrectAnswer = (statusesSet.size === 1 && statusesSet.has('correct'))
-
-    if(!!isCorrectAnswer){
+    if(guess === answer){
       setShowHappyBanner(true)
     }
-
 
     if(guesses.length + 1 === NUM_OF_GUESSES_ALLOWED){
       setShowSadBanner(true)
